@@ -29,7 +29,7 @@ Each folder is named by **day number**, and inside each file, you'll find:
 
 | Day | Problem | Link |
 |-----|---------|------|
-| 1 | 1768. Merge Strings Alternately | [day-1/1768-merge-strings-alternately.txt](day-1/1768-merge-strings-alternately.txt) |
+| 1 | 1768. Merge Strings Alternately | [day-1/1768-merge-strings-alternately.txt](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75) |
 
 _(This table will grow as I continue this journey.)_
 
