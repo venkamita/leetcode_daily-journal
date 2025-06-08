@@ -1,0 +1,105 @@
+Title: 1071. Greatest Common Divisor of Strings
+Notes:
+-[x]OK lets get started with day-2 had some great lunch with family
+-[x]First i notice when they say greatest common divisor of strings they mean the largest string present in both given strings
+-[x]My aim is to return this greatest string, alright i have come prepared this time and will think of a solution in English
+-[x] Upon closely reading i realized they define it like say t is a string ,s is a string then t divides s if and only if s=t+t+t... i.e s=n*t which implies that no remainders and that  s is repetition of course not sure if this thinking is right but will try to solve like this
+-[x] ok if s=n*t and if t has to be longest length possible then n has to be least value
+Pseudocode1:
+l=[]
+count=0,k=1
+while k<=len(shorter string(henceforth str1)):
+	if k*str1[:count+1]==longer str(henceforth str2):
+		l.append((str1,k))
+		#count=0 initially thought that if i do this the count will reset everytime a match is found so that the next time it is called it starts from the beginning but this is probably redundant as count here has no use other than checking for the if condition
+		k=0
+	else:
+		count+=1
+		k+=1
+a=[]
+for i in l:
+	a.append(i[1])
+b=min(a)
+
+for i in l:
+	if b==i[1]:
+		return i[0]
+-[x] Ok failed above logic dont work particularly the if statement in the while loop dont work and nothing is append into list l and hence infinite loop 
+-[x] some more debugging and finally a output
+First code:
+str1 = "abcabcabc"
+str2 = "abc"
+l = []
+count = 0
+k = 1
+while count <= len(str2):
+    c=k*str2
+    if c == str1:
+        l.append((str2, k))
+        k = 1
+    else:
+        k += 1
+        continue
+    count += 1
+
+a = []
+for j in l:
+    a.append(int(j[1]))
+b = min(a)
+
+for i in l:
+    if b == i[1]:
+        print(i[0])
+Optimizations: nope its so bad i got TLE got to find another way to reduce the loops
+-[x] i wonder if i can reduce the loops by using list comprehension 
+new code for last 2 loops:
+b=min(int(j[1]) for j in l)
+return next(i[0] for i in l if b==i[1])
+-[x] again TLE checked the hint because i am one hour in now it said to use prefix methods which is something new so i google searched it and well its a bunch of importing from other modules well that aint the solution an interviewer would look for 
+-[x]Ok checked the article to find the number of instances of a substring in a main string in geeksforgeeks and i will change plans 
+-[x] new approach i will find the instances of str2 in str1 and if str2*instances of str2 in str1 ==str1 then return str2 else return ""
+-[x] this works for most test cases but i think it wont work if str2 has substrings itself will try to tweak for that
+nearly correct  code:
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+       
+        c=str1.count(str2)
+        l=[]
+        for i in range(len(str2)):
+            for j in range(i+1,len(str2)+1):
+                l.append(str2[i:j])
+        b=max(l,key=len)
+        l.remove(b)
+        d=max(l,key=len)
+        l.remove(d)
+        e=b.count(d)
+        f=max(l,key=len)
+        if str2*c!=str1 and c==0:
+            return ""
+        elif b  in str1 and f in b and b in str2 and d*e==b: 
+            return d 
+        elif b==f*2:
+            return f  
+        else:
+            return b
+-[x] this worked for two test cases and hence is wrong partially so i decided to ask help of AI as i am 2 hrs in 
+Final code:
+class Solution:
+    def gcdOfStrings(self, str1: str, str2: str) -> str:
+        l = []
+        for i in range(1, len(str2)+1):
+            candidate = str2[:i]
+            if str1.replace(candidate, "") == "" and str2.replace(candidate, "") == "":
+                l.append(candidate)
+        if l:
+            return max(l, key=len)
+        return ""
+-[x] this makes sense they use a function i didnot know tho ,replace and replace slices of string with empty string to find the substrings that match and then add it to a new list from where via max(L,key=len) is used to get the final string if it doesn't work then the code return empty string
+-[x] Time complexity is O(N^2) and space complexity is O(N) not good will try to improvise this later 
+Final thoughts:
+Today was fruitful as i tried to code on my own bar the last part where i kept failing the test case 2 as the code became unnecessarily complex , eventually i gave up and asked help of AI but its a problem i solved 80% on my own so an improvement from last problem I will learn even more but for now its over. I will see y'all tomorrow.
+Signing off-
+Sharat Doddihal
+
+
+	
