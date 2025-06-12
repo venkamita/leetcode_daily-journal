@@ -18,24 +18,28 @@ Each folder is named by **day number**, and inside each file, you'll find:
 
 ## 🚀 Goals
 
-- Build strong intuition in DSA in python
-- Train consistency and discipline
-- Prepare for interviews by learning from mistakes
+- Build strong intuition in DSA in python  
+- Train consistency and discipline  
+- Prepare for interviews by learning from mistakes  
 - Create a personal code journal for future reference
-  
+
 ---
 
 ## ✅ Day Logs
 
 | Day | Problem | Link |
 |-----|---------|------|
-| 1 | 1768. Merge Strings Alternately | [day-1/1768-merge-strings-alternately.txt](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75) |
+| 1 | 1768. Merge Strings Alternately | [LeetCode Link](https://leetcode.com/problems/merge-strings-alternately/description/?envType=study-plan-v2&envId=leetcode-75) |
+| 2 | 1071. Greatest Common Divisor of Strings | [LeetCode Link](https://leetcode.com/problems/greatest-common-divisor-of-strings/?envType=study-plan-v2&envId=leetcode-75) |
+| 3 | 1431. Kids With the Greatest Number of Candies | [LeetCode Link](https://leetcode.com/problems/kids-with-the-greatest-number-of-candies/description/?envType=study-plan-v2&envId=leetcode-75) |
 
 _(This table will grow as I continue this journey.)_
 
 ---
+
 ## 📝 Note
-Every problem in here is solved using python. 
+
+Every problem in here is solved using **Python**.
 
 ---
 
@@ -53,3 +57,4 @@ CS Undergrad | C & Python | Learning DSA the hard way
 ---
 
 > “Struggle. Code. Learn. Repeat.”
+
