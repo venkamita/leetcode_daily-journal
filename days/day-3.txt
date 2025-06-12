@@ -1,0 +1,74 @@
+
+1431. Kids With the Greatest Number of Candies
+Hello I am back. My end semester exams are underway and hence the one week pause(had to prepare for maths-2).
+Hopefully I will be more consistent from now on and yes i am still experimenting with the  template till now i have kept it free flowing even though originally i planned to work with a strict rigid template for these logs. So the solution I thought of was simple, I will keep the logs from now on free flowing and styled just enough to navigate through these logs. Enough about this stuff alright lets start with todays question.
+Upon first reading  i got lost in the information and lost track of what is input. Anyway so the inputs are extracandies and  integer array candies and i have to basically check that when I add the extra candies to all the elements individually and i have to check which index has the maximum value it can be multiple 
+, what I mean is there is possibility of duplicity for the maximum value but that's not too much of a concern not for now at least as i have to make a new results array which has characters of bool type: the value at the respective index is True if after adding extra candies to the original value  and the new value is the greatest or equal to the greatest value present in the array ( the other indices are unaffected) and false for any other situation.
+pseudocode:
+Make a new result array
+Run a while loop over the array and hence name a variable i to keep track of iterations over array and also track of the index.
+Inside the while loop add extracandies to the value at i. Do NOT add for every value in array.
+then say a variable maxholder=max(array).
+compare maxholder with value at i.
+if value at i==maxholder:
+	append True into the result array
+else:
+	append False into result array
+Now subtract extracandies from the value at i.(to bring back the original array)
+Increment i and make sure its lesser than length of array.
+Return result array.
+First code:
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        i=0
+        result=list()
+        n=len(candies)
+        while i<n:
+            candies[i]=candies[i]+extraCandies
+            maxholder=max(candies)
+            if maxholder==candies[i]:
+                result.insert(i,True)
+            else:
+                result.insert(i,False)
+            candies[i]=candies[i]-extraCandies
+            i=i+1
+        return result
+Right on the money!! I got the question correct first time. This is first time I have achieved that , nice now I also didn't use any AI unlike last two problems where I used AI to help me in varying degrees. So job well done although i felt this question was much simpler than the previous questions but that  doesn't matter. Hmm, I have  seen its time and space complexity they are O(N^2) and O(N). Memory wise it seems fine but maybe i can reduce the time complexity. This will be my first time trying to make my code more optimised as till now i struggled to get the brute force code , i should learn to optimize the code.
+I read an article comparing the for loop and while loop and came to the conclusion that for loop is lighter it can make my code faster.
+Reference:https://en.ittrip.xyz/python/for-vs-while-performance
+Wait upon reading another article from https://www.geeksforgeeks.org/ it suggested using the map function and a list comprehension to save more memory. I will try out both methods and compare directly at which is faster.
+Second code:
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        result=list()
+        n=len(candies)
+        for i in range(0,n):
+            candies[i]=candies[i]+extraCandies
+            maxholder=max(candies)
+            if maxholder==candies[i]:
+                result.insert(i,True)
+            else:
+                result.insert(i,False)
+            candies[i]=candies[i]-extraCandies
+            
+        return result
+This had same performance memory wise but was 2ms quicker in execution but when i ran it the second time it seems to take more memory and runs same as the first code memory wise.To reduce memory use  I removed the variable n and directly wrote len(candies) in the range function this saved barely on memory down from 17.82 to 17.76mb.
+Truth to be told my list comprehension with map function is not very strong but i will make one last attempt to optimize the code.	
+Final code:
+class Solution:
+    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+        maxholder=max(candies)
+        candies=[(val+extraCandies) for val in candies]
+        result=[True if val>=maxholder else False for val in candies ]
+            
+            
+        return result
+HAHA it took a little google search and learning but i have done it. The last code is done using list comprehension fully. While i did  run into some errors because i was not well versed with the syntax for list comprehension but it worked in the end. The optimizations is 0ms for time and space wise 17.74mb so a huge reduction in time space wise i do not think i can optimize further. The logic remains the same as the first code but the small changes that i done is use list comprehension in instead of loops and yes this time i used maxholder at the beginning as in the code before i used to it inside the loops and that lead to extra work unnecessary even, and then added to all the values with extracandies and at once comparing and as per question i have added true or false to the final result array.
+Well that was an easier question than the last two questions i attempted. Now i will take a breather great way to end this session of leet code. I will see yall tomorrow.
+References:
+https://www.geeksforgeeks.org/difference-between-list-comprehension-and-lambda-in-python/
+https://www.geeksforgeeks.org/python-list-comprehension/
+https://www.youtube.com/watch?v=8dMkaAdd8T8
+
+Signing off
+-Sharat Doddihal
