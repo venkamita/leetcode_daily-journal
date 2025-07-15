@@ -1,106 +1,65 @@
-# 🧠 LeetCode Log – Day 1
+Hello, this document has to be maintained for every problem i solve on leetcode from henceforth general template to follow :
+title: question  number question title
+Notes: mistakes no matter how stupid , and the thought process
+Optimization possibility: represent in Big O the optimizations done and how
+Code:both the first code and final code with its big O complexity in time and space .Hopefully this makes me learn and i become better at coding in dsa and also be consistent future me.
 
-## 🔢 Problem: 1768. Merge Strings Alternately
 
----
+1768. Merge strings alternatively
+Notes:
+confused c syntax with python forgot that you have to use append or insert to add to a list and not list[i]=word1[i](which would  work in c)
+Notice that word2 letters keep getting added to odd index, and word1 to even index 
+Checked the hint told me to use two pointers hence will use while loop (should not check hint so early next time)
+Ok tried to run two while loops it says time limit exceeded which means clearly its too slow 
+OK realized it occurred due to wrong indentation (put i in inner while loop which is over j, i and j are my pointer equivalents here)
+has 2 flaws i ran two while loops over word1 and qword2 to add them at even and odd positions i seem to skip some letters through my logic:
+word1="abc"
+word2="pqr"
+list1=list(word1)
+list2=list(word2)
+list3=list()
+i=0
+j=1
 
-### 🧠 Notes
+for k in range(len(word1)+ len(word2)):
+        while i <len(word1):
+            while j<len(word2):
+                list3.append(word1[i])
+                list3.append(word2[j-1])
+                j=j+2
+                i=i+2
 
-- ❌ Confused C syntax with Python:
-  Tried `list[i] = word1[i]` — works in C, not in Python.
-  Need to use `.append()` or `.insert()`.
-
-- 🔍 Observation:
-  - `word1` characters go to even indices
-  - `word2` characters go to odd indices
-
-- 🧪 Initial Strategy:
-  - Tried two pointers (`i`, `j`) in nested while loops.
-  - Logic was partially working, but skipped characters due to incorrect nesting and pointer updates.
-  - Output like `[a, p]` showed up but the full interleaving failed.
-
-- ❗ Mistakes:
-  - Did not think in English or pseudocode before coding.
-  - Rushed to code without laying out logic.
-  - Checked hints too early.
-  - Relied on Copilot for fixes instead of building logic myself.
-
-- ✅ Takeaway:
-  For string interleaving problems, think in terms of string construction — not list positions.  
-  Use a clear approach with boundaries (`min(len1, len2)`) and handle leftovers separately.
-
----
-
-### ❌ Initial Attempt (Flawed Logic)
-
-**Buggy Code:**
-
-```python
-word1 = "abc"
-word2 = "pqr"
-list1 = list(word1)
-list2 = list(word2)
-list3 = list()
-i = 0
-j = 1
-
-for k in range(len(word1) + len(word2)):
-    while i < len(word1):
-        while j < len(word2):
-            list3.append(word1[i])
-            list3.append(word2[j - 1])
-            j = j + 2
-            i = i + 2
-
+   
 print(list3)
-###✅ Approach 1 (Using a while loop and list)
-
--Simple and safe: prevents index out-of-bound by checking index each time.
-
--Appends characters from word1 and word2 alternatively.
-
--Time Complexity: O(n + m)
-
--Space Complexity: O(n + m)
----
-```
-def mergeAlternately(word1, word2):
-    result = []
-    i = 0 
-    while i < len(word1) or i < len(word2):
-        if i < len(word1):
-            result.append(word1[i])
-        if i < len(word2):
-            result.append(word2[i])
-        i += 1
-    return "".join(result)
-```
----
-###✅ Final Approach  (Using string concatenation and slicing)
-
--Cleaner and faster; avoids multiple conditional checks.
-
--Handles leftover characters elegantly using slicing.
-
--Execution Time: 42ms
-
--Memory: 17.47MB (beats 99.5%)
-
--Time Complexity: O(n + m)
-
--Space Complexity: O(n + m)
----
-```
-def mergeAlternately(word1, word2):
-    string3 = ""
-    count = 0
-    while count < min(len(word1), len(word2)):
-        string3 += word1[count] + word2[count]
-        count += 1
-    return string3 + word1[count:] + word2[count:]
-```
----
-###🧾 Closing Thoughts
-“Not a great start, but it’s the journey that counts. Will keep pushing.”
-
-— Sharat Doddihal
+this give output as [a,p] as well so the logic is partially correct but i need it to repeat and move throughout the whole strings..
+had a look at the hint before made sense but i cant seem to get it will look at the explanation 
+Main mistakes:
+didn't make a solution in English 
+didn't translate that into pseudocode
+only thought about coding directly 
+have to approach such problems more properly and methodically 
+Ok read the approach will change tactics from using lists and thinking in terms of lists and try to think of strings first for these kinds of problems , what was explained in the solution was that i have to choose to append  each character from both words alternatively into a  new string and loop runs till longer word
+ok tried to code on my own it went horribly wrong too many errors in my logic so i used copilot to debug and understand i did understand but  well its not my own approach so will look at full solution and its code as well and will attempt to write the code and understand it and then close for the day
+OK first code i saw from solutions given understood and then wrote code:
+result=[]
+        i=0 
+        while i<len(word1) or i<len(word2):
+            if i<len(word1):
+                result.append(word1[i])
+            if i<len(word2):
+                result.append(word2[i])
+            i=i+1
+        return "".join(result)
+Optimization:
+its simple and smart logic he runs a while loop to make sure that index out of bounds don't happen and then he checks that as long as i is less than the lengths of word1 and word2 he appends in the order the question expects hence first append word1 then word2 i wonder if i can skip the if statements? no i cant as then index out of bounds can occur.Time and space complexity is O(n+m).
+Onto the second solution clearly more lighter here make a new string3  and then add all the elements from word1 first then word2 till the minimum of the length of both words and then leftover part is concatenated to the string3 and returned:
+string3=""
+        count=0
+        while count<min(len(word1),len(word2)):
+            string3+=word1[count]+word2[count]
+            count+=1
+        return string3+word1[count:]+word2[count:]
+Optimization:
+Its execution time is 42ms cant see the time and space complexity from reaching max number of the analysis limits on leetcode but its memory used was 17.47mb beating 99.5% of all solutions clearly it is lighter as i hypothesized before. Not a great way to start off this journey but will keep pushing as its the journey that counts. 
+Signing off
+Sharat Doddihal
