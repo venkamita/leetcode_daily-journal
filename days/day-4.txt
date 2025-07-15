@@ -1,0 +1,47 @@
+605. Can Place Flowers
+Hello everyone it has been a while as I was away from coding as I had to focus on my end semester exams. But now I am back. Today's problem 605. Can Place Flowers.
+After reading the question I see that the basic premise is that the layout of the flower bed is given with 0 being empty slots and 1 being filled. I have also been given that there is constraint like there can be no 0 and 1 adjacent to each other and I need to check if the integer n which represent the new amount of flowers can be fitted into the flowerbed while complying with the restraints and I must return True if it does and False otherwise.
+I am thinking since we know n I can just append n times into the list into multiple positions and then I can check for each possible outcome if there exists a possibility of there being no adjacent flowers.
+Pseudocode 1:
+->set flag to False
+->run a for loop over the given list  for n iterations
+->each iteration I append 1 n times 
+->now for each appended time we check if there exists a pair of [1,1] in the list if it does we move to the next iteration and set flag to False
+->if it doesn't exist we stop the iterations and set flag to True and that is the returned value
+Alright I have seen that this not going to work seems to keep failing the second example 
+Pseudocode 2:
+-So I manually input 0 to the beginning and the end of the array 
+-Then linear pass through it while keeping track of the left side and right side of the  slot being observed
+-Check if they are empty or not and based on the plot and its neighbours we can append 1 in the manner the question expects
+- After that we count the number of ones in it if it is ==n return True  else False
+Working code(bruteforce):
+def canPlaceFlowers(self, flowerbed: List[int], n: int) -> bool:
+        f=[0]+flowerbed+[0]
+        
+        for i in range(1,len(f)-1):
+            left=i-1
+            right=i+1
+            if f[left]==0 and f[i]==0 and f[right]==0:
+                f[i]=1
+                n-=1
+        return n<=0
+      
+The above code has O(n) space and time complexity
+Well I also realized there is a possibility of a solution O(1) space complexity and O(n) time :
+	i=0 
+        while i<len(flowerbed):
+            left= (i==0) or (flowerbed[i-1]==0)
+            right=(i==len(flowerbed)-1)or(flowerbed[i+1])
+            if left and right:
+                flowerbed[i]=1
+                n-=1
+            i+=1
+        return n<=0
+Here i removed the padding and check if the left and right exist or if they are equal to zero if they do exist coupled with checking flowerbed[i]==0 and returning true if n<=0 as that would mean that well above n flowers can be planted.
+I have to be honest i  have not been very consistent when i try to study and prepare for DSA questions right now . A personal victory for me that today i put aside my ego and actually checked youtube to understand the problem.
+Signing off-
+Sharat Doddihal
+References:
+https://youtu.be/ZGxqqjljpUI?feature=shared
+
+
