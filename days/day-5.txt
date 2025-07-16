@@ -1,0 +1,60 @@
+
+345. Reverse Vowels of a String
+Hello everyone, another day, another question that makes me feel like I need to reevaluate my career choices.
+The question wants me to reverse all the vowels of a string. Upon immediate inspection, I thought of a method similar to binary search where we keep track of "left" and "right" and traverse through the string. But here's the catch: vowels can be either lowercase or uppercase — a minor issue which can easily be solved using inbuilt functions like .lower() or .upper().
+Pseudocode 1:
+-set variables left and right to the beginning and the end indices respectively
+-traverse through the string while incrementing left and decrementing right
+-check if left and right are vowels; if they are, then swap
+-continue until either right or left reaches the end
+NOTE:
+I made a few mistakes here which upon debugging I noticed:
+
+-I wrote the while loop in a C-like way just a bit of autopilot (I wrote left!=right instead of left<right)
+
+-I incremented the left and right regardless of whether it is a vowel or not which is WRONG. Instead, I should increment both only if both left and right are vowels or if both are not vowels. In the other cases, I should increment only the non-vowel pointer.
+
+This is just a base working code. HOWEVER, I could have optimized it by simply using strl[left] and strl[right] instead of using s[left] and s[right]. The only reason why it worked here was that s being a str is immutable, but even then it is prone to bugs.
+Code 1:
+vowel="aeiouAEIOU"
+strl=list(s)
+left=0
+right=len(s)-1
+while left<right:
+if s[left] in vowel and s[right] in vowel:
+temp=strl[left]
+strl[left]=strl[right]
+strl[right]=temp
+left+=1
+right-=1
+elif s[left] not in vowel and s[right] in vowel:
+left+=1
+elif s[left] in vowel and s[right] not in vowel:
+right-=1
+else:
+left+=1
+right-=1
+return "".join(strl)
+Optimized Final Code:
+vowel="aeiouAEIOU"
+strl=list(s)
+left=0
+right=len(s)-1
+while left<right:
+if strl[left] in vowel and strl[right] in vowel:
+strl[left],strl[right]=strl[right],strl[left]
+left+=1
+right-=1
+elif strl[left] not in vowel and strl[right] in vowel:
+left+=1
+elif strl[left] in vowel and strl[right] not in vowel:
+right-=1
+else:
+left+=1
+right-=1
+return "".join(strl)
+Here, as I said before, I made sure to use strl itself in the if-elif-else ladder conditions under the while loop. I also reduced the memory usage, as my swapping logic was originally very C-like — but in order to stay more "pythonic," I swapped using the simple Python syntax and VOILA! A huge improvement in space and time complexity, which is O(N) as we traverse through strl and O(N) as we swap the elements by insertion.
+Today was a bit of a quick one. I feel like there’s further scope to optimize the program using inbuilt string functions and methods, but I’m a bit busy today so I won’t be doing that right now.
+Have a good day.
+Signing off –
+Sharat Doddihal
