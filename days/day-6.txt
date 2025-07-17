@@ -1,0 +1,28 @@
+151. Reverse Words in a String
+Hello everyone I am back with another LeetCode problem attempt. I am feeling a bit under the weather because I was busy learning how to drive a car under the scorching sun. I have decided to give competitive programming a try tonight will be my first codeforces contest I do not how it will go since I have yet to do any intensive preparation for it. Well I will find out soon enough. Anyway lets continue with today's problem.
+I have been given that a word is any sequence of letters without space in between them. My main objective is to return a string of the words in reverse order concatenated by a single space. Here as given in the examples I have to NOT reverse the letters but to reverse the order of the words.
+Pseudocode 1:
+-Split the string across the whitespace 
+-Strip each word of its leading and trailing whitespaces
+-Now we just reverse the order the words appear in 
+Code 1:
+strl=s.split()
+strlnew=[]
+for i in strl:
+	i=i.strip(" ")
+for j in range(len(strl)):
+	a=strl.pop()
+ 	strlnew.append(a)
+return  " ".join(strlnew)
+This my brute force solution time and space complexity O(N) and O(N) respectively. Possible optimizations include me removing the two lists and maybe finding a new logic so that I can avoid writing two for loops.
+Code 2:
+strl=s.split()
+strlnew=[]
+for i in  range(len(strl)):
+            a=strl.pop().strip(" ")
+            strlnew.append(a)
+return " ".join(strlnew)
+The time and space complexity remains the same as before technically but because I have removed a for loop this code works extremely better than the last one in terms of time needed for execution.
+Today was a quick one and funnily enough this was  my first medium question attempt on leetcode. Best part is I was in and out 40 minutes. I feel great knowing I did not put a single foot wrong here today although that only serves to boost my ego. Real learning happens when I make mistakes. Today was not one of those days but yes I will enjoy this small victory for now. See y'all tomorrow.
+Signing off-
+Sharat Doddihal
