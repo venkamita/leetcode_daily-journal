@@ -35,6 +35,7 @@ Each folder is named by **day number**, and inside each file, you'll find:
 | 4 | 605. Can Place Flowers | [LeetCode Link](https://leetcode.com/problems/can-place-flowers?envType=study-plan-v2&envId=leetcode-75) |
 | 5 | 345. Reverse Vowels of a String | [LeetCode Link](https://leetcode.com/problems/reverse-vowels-of-a-string?envType=study-plan-v2&envId=leetcode-75) |
 | 6 | 151. Reverse Words in a String | [LeetCode Link](https://leetcode.com/problems/reverse-words-in-a-string?envType=study-plan-v2&envId=leetcode-75) |
+| 7 | 238. Product of Array Except Self | [LeetCode Link](https://leetcode.com/problems/product-of-array-except-self?envType=study-plan-v2&envId=leetcode-75) |
 _(This table will grow as I continue this journey.)_
 
 ---
