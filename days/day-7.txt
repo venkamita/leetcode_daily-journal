@@ -1,0 +1,24 @@
+238. Product of Array Except Self
+Hello everyone. It has been two days or so since I solved a LeetCode problem but really I was over on CodeForces trying to understand their system of rating and attempted my first contest there. It was round 1037 div 3 and well I went in blind to be honest but I came out with the answer for question A and yes it went better than I expected. In the near future maybe I will another repository detailing my struggles over there . Lets begin with today's question it is a LeetCode Medium  level. I have been tasked to return an array answer in each element answer[i] contains the products of all remaining elements of the array nums except nums[i]. I have also been told I cannot use division operator and must write an algorithm that runs in O(n) time.
+I have tried for over an hour and unfortunately I did not get the answer. I would have normally written the pseudocode at this point as to what I did and what went wrong but today  I did not bother with writing the answer in plain English first and then coding it. I just went down the rabbit hole of coding and debugging again and again. So at this point I will use the resources online for an answer. I had thought of a interesting idea where I basically keep traversing through the list and I keep multiplying the adjacents instead of the ith index that did not work as I stumbled when I realised that as i moves forward the ith index of the previous iteration becomes one of the adjacents for the current i and I could not find a way out of that. And I come across the prefix and postfix method where we find the prefix and postfix of each element and then multiply together to get the product without the ith element. Now imma be honest I partially saw the logic explanation from the neetcode video which I will link below and also used help of AI for this to debug. Since it is very late into this session I will not be doing an optimized solution. Instead I will stop at the first working code. Mainly AI helped with its ingenious idea of initializing the prefix and postfix lists with all elements as 1. There was another critical bug I ran into where I was including the ith element in the calculation of the prefix and postfix as well. Overall very much a important identification from AI but I feel I should do better and figure that out myself next time. For now make do with this human+neetcode(partially)+ AI(critical help) flavored solution.
+Pseudocode :
+-Set prefix and postfix as lists with all elements initialized to one
+-Run a loop over the nums list from the start and keep finding the prefix of every position
+-Run a loop over the nums list from the end and keep finding the postfix of every position
+-Multiply each element of the prefix and postfix to get the elements of the answer list
+Code:
+length=len(nums)
+prefix=[1]*length
+postfix=[1]*length
+for i in range(1,length):
+  prefix[i]=prefix[i-1]*nums[i-1]
+for j in range(length-2,-1,-1):
+  postfix[j]=postfix[j+1]*nums[j+1]        
+answer=[prefix[k]*postfix[k] for k in range(0,len(nums))]
+return answer
+Well that's another medium problem answered. The break I took for 2 days I definitely felt it right now. This was very messy I really approached without a plan but came out with some important learnings. All in all I will be more systematic from next time. Although I feel that with the restrictions that was placed it felt like they were almost forcing me to solve it in a especially unique way. This I feel warrants that the problem be tagged hard. Well anyway I got  the solution working in O(n) time and space complexity. I still don't like that I had to use three for loops to work it out and had to make two new lists.
+Signing off-
+Sharat Doddihal
+Reference:
+https://youtu.be/bNvIQI2wAjk?feature=shared
+Chatgpt for debugging the very important logical flaw in my code
