@@ -43,7 +43,7 @@ _(This table will grow as I continue this journey.)_
 
 ## 📝 Note
 
-Every problem in here is solved using **Python**.
+Every problem in here is solved using **Python** and **C**.
 
 ---
 
