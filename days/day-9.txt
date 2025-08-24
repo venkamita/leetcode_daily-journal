@@ -1,0 +1,54 @@
+160. Intersection of Two Linked Lists
+This function, getIntersectionNode, takes the heads of two singly linked lists and returns the node at which the two lists intersect, or NULL if they do not intersect. The function first checks for empty lists and immediately returns NULL if either list is empty. It then traverses both lists to calculate their lengths. After determining the lengths, it resets the pointers to the heads and advances the pointer of the longer list by the difference in lengths, ensuring that both pointers are equidistant from the end of their respective lists. Finally, it moves both pointers forward simultaneously, comparing them at each step. If the pointers meet, the function returns the intersecting node; if the end of the lists is reached without a match, it returns NULL. This approach ensures correct detection of the intersection while handling lists of different lengths efficiently.
+Code:
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+struct ListNode *getIntersectionNode(struct ListNode *headA, struct ListNode *headB) {
+    if (!headA || !headB) return NULL;
+
+    struct ListNode *ptr1 = headA;
+    struct ListNode *ptr2 = headB;
+    int lenA = 0, lenB = 0;
+
+    while (ptr1 != NULL) {
+        lenA++;
+        ptr1 = ptr1->next;
+    }
+
+    while (ptr2 != NULL) {
+        lenB++;
+        ptr2 = ptr2->next;
+    }
+
+    ptr1 = headA;
+    ptr2 = headB;
+
+    if (lenA > lenB) {
+        int diff = lenA - lenB;
+        while (diff > 0) {
+            ptr1 = ptr1->next;
+            diff--;
+        }
+    } else if (lenB > lenA) {
+        int diff = lenB - lenA;
+        while (diff > 0) {
+            ptr2 = ptr2->next;
+            diff--;
+        }
+    }
+
+    while (ptr1 != NULL && ptr2 != NULL) {
+        if (ptr1 == ptr2) {
+            return ptr1;
+        }
+        ptr1 = ptr1->next;
+        ptr2 = ptr2->next;
+    }
+
+    return NULL;
+}
