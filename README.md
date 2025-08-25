@@ -37,6 +37,8 @@ Each folder is named by **day number**, and inside each file, you'll find:
 | 6 | 151. Reverse Words in a String | [LeetCode Link](https://leetcode.com/problems/reverse-words-in-a-string?envType=study-plan-v2&envId=leetcode-75) |
 | 7 | 238. Product of Array Except Self | [LeetCode Link](https://leetcode.com/problems/product-of-array-except-self?envType=study-plan-v2&envId=leetcode-75) |
 | 8 | 334. Increasing Triplet Subsequence | [LeetCode Link](https://leetcode.com/problems/increasing-triplet-subsequence?envType=study-plan-v2&envId=leetcode-75) |
+| 9 | 160. Intersection of Two Linked Lists | [LeetCode Link](https://leetcode.com/problems/intersection-of-two-linked-lists) |
+| 10 | 141. Linked List Cycle | [LeetCode Link](https://leetcode.com/problems/linked-list-cycle) |
 _(This table will grow as I continue this journey.)_
 
 ---
