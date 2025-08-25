@@ -1,0 +1,43 @@
+141. Linked List Cycle
+Hello everyone. I will from this day onwards focus more on linked lists and other data structures related to it 
+for a while as I have it also as part of my university coursework so two birds one stone scenario is upon me.
+And other than that lets get into the solution.
+To solve this problem I applied Floyd’s Cycle Detection Algorithm, also called the tortoise and hare method. 
+The main idea is to use two pointers that traverse the linked list at different speeds. The slow pointer moves 
+one step at a time while the fast pointer moves two steps. If the list does not contain a cycle then the fast 
+pointer will eventually reach the end of the list (become null), which means we can safely return false. On the 
+other hand, if there is a cycle then the fast pointer will eventually catch up to the slow pointer inside the loop. 
+When both pointers point to the same node we know a cycle exists and can return true. This approach works in O(n) time 
+and uses O(1) extra space since we are only using two pointers. And note we can also initialize fast pointer to head itself
+no need to initialize it to head->next like i did that because i felt it was more clear when both pointers started their respective
+loops from different positions.
+Code:
+/**
+ * Definition for singly-linked list.
+ * struct ListNode {
+ *     int val;
+ *     struct ListNode *next;
+ * };
+ */
+bool hasCycle(struct ListNode *head) {
+    if(head==NULL || head->next==NULL){
+        return false;
+    }
+    struct ListNode* slowptr=head;
+    struct ListNode* fastptr=head->next;
+    if(fastptr==NULL){
+        return false;
+    }
+    while( fastptr!=NULL &&fastptr->next!=NULL ){
+        
+        slowptr=slowptr->next;
+        fastptr=fastptr->next->next;
+        if(fastptr==slowptr){
+            return true;
+        }
+    }
+    return false;
+
+}
+Signing off-
+Sharat Doddihal
