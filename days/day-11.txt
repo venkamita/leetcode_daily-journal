@@ -1,0 +1,41 @@
+206. Reverse Linked List
+Hello everyone. Today's problem is to reverse a linked list.
+We will make use of three pointers prevptr,currptr,nextptr.
+currptr initialize to head, the others to NULL.
+So we loop over the list by using currptr and not the other two.
+Why? because this helps us handle edge cases more nicely like if 
+we had used nextptr then that whould lead to a case where curr ptr 
+never reaches the last node which is very important for this code 
+and it would also lead to a crash as then nextptr would become NULL.
+Hence the requirement of using currptr. What we do inside loop is move 
+nextptr to the node next to currptr always then make currptr->next point 
+to prevptr and then move prevptr to currptr position then move currptr 
+to nextptr position all the time nextptr=currptr->next.This also makes 
+it very important to move nextptr before trying to reverse the bonds 
+between the nodes.
+Code:
+struct ListNode* reverseList(struct ListNode* head) {
+    if(head==NULL ){
+        return NULL;
+    }
+    if(head->next==NULL){
+        return head;
+    }
+    struct ListNode* currptr=head;
+    struct ListNode* prevptr=NULL;
+    struct ListNode* nextptr=NULL;
+    while(currptr!=NULL){
+        nextptr=currptr->next;
+        currptr->next=prevptr;
+        prevptr=currptr;
+        currptr=nextptr;
+        
+
+        
+    }
+
+    return prevptr;
+    
+}
+Signing off-
+Sharat Doddihal 
