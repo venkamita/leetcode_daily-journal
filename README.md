@@ -39,6 +39,7 @@ Each folder is named by **day number**, and inside each file, you'll find:
 | 8 | 334. Increasing Triplet Subsequence | [LeetCode Link](https://leetcode.com/problems/increasing-triplet-subsequence?envType=study-plan-v2&envId=leetcode-75) |
 | 9 | 160. Intersection of Two Linked Lists | [LeetCode Link](https://leetcode.com/problems/intersection-of-two-linked-lists) |
 | 10 | 141. Linked List Cycle | [LeetCode Link](https://leetcode.com/problems/linked-list-cycle) |
+| 11 | 206. Reverse Linked List | [LeetCode Link](https://leetcode.com/problems/reverse-linked-list) |
 _(This table will grow as I continue this journey.)_
 
 ---
