@@ -1,0 +1,31 @@
+876. Middle of the Linked List
+So today's problem is to return the middle node if the given singly linked list
+is of odd length and to return the 2nd middle node if the given singly linked 
+list is of even length. Pretty straightforward so I run a while loop over it to 
+calculate the total number of nodes. Then I check if the count is even or odd
+depending on this I use some basic mathematic formulae to find the desired position.
+Then finally a for loop to iterate ptr2 till it reaches the required position and then
+simply returning it.
+Code:
+struct ListNode* middleNode(struct ListNode* head) {
+    struct ListNode* ptr=head;
+    struct ListNode* ptr2=head;
+    int count=0;
+    int mid=0;
+    while(ptr!=NULL){
+        count++;
+        ptr=ptr->next;
+    }
+    if(count%2==0){
+         mid=(int)(count/2)+1;
+    }
+    else{
+         mid=(int)(count+1)/2;
+    }
+    for(int i=1;i<mid;i++){
+        ptr2=ptr2->next;
+    }
+    return ptr2;
+}
+Signing off-
+Sharat Doddihal
