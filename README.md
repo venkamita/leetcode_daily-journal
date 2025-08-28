@@ -40,6 +40,8 @@ Each folder is named by **day number**, and inside each file, you'll find:
 | 9 | 160. Intersection of Two Linked Lists | [LeetCode Link](https://leetcode.com/problems/intersection-of-two-linked-lists) |
 | 10 | 141. Linked List Cycle | [LeetCode Link](https://leetcode.com/problems/linked-list-cycle) |
 | 11 | 206. Reverse Linked List | [LeetCode Link](https://leetcode.com/problems/reverse-linked-list) |
+| 12 | 876. Middle of the Linked List | [LeetCode Link](https://leetcode.com/problems/middle-of-the-linked-list) |
+| 13 | 234. Palindrome Linked List | [LeetCode Link](https://leetcode.com/problems/middle-of-the-linked-list) |
 _(This table will grow as I continue this journey.)_
 
 ---
