@@ -1,0 +1,41 @@
+234. Palindrome Linked List
+I had to check for a palindrome linked list. I began first by counting the total nodes of the linked list in a 
+while loop. Then I proceeded to make a array statically as this seems to be the simplest brute force approach and
+one by one I inserted the values of the linked list into the array. Then another for loop over the array comparing 
+the elements from the front and back in the array. Overall I feel I can optimize it more by making the counting and 
+insertion in one loop. Ran into a out of bounds error that was solved by simply increasing the bounds way more than the
+constraint.
+Code:
+bool isPalindrome(struct ListNode* head) {
+    int count=0;
+   
+    int arr[110000];
+    struct ListNode* temp=head;
+    struct ListNode* temp2=head;
+    int flag=1;
+    int i=1;
+    while(temp!=NULL){
+        temp=temp->next;
+        count++;
+        
+    }
+    
+    while(temp2!=NULL){
+            arr[i-1]=temp2->val;
+            temp2 = temp2->next;
+            i++;
+        }
+    for(int j=0;j<count;j++){
+            if(arr[j]==arr[count-j-1]){
+                flag=1;
+            }
+            else{
+                flag=0;
+                return false;
+            }
+        }
+    
+    return true;
+}
+Signing off-
+Sharat Doddihal
