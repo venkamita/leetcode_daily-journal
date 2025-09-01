@@ -42,6 +42,7 @@ Each folder is named by **day number**, and inside each file, you'll find:
 | 11 | 206. Reverse Linked List | [LeetCode Link](https://leetcode.com/problems/reverse-linked-list) |
 | 12 | 876. Middle of the Linked List | [LeetCode Link](https://leetcode.com/problems/middle-of-the-linked-list) |
 | 13 | 234. Palindrome Linked List | [LeetCode Link](https://leetcode.com/problems/middle-of-the-linked-list) |
+| 14 | 21. Merge Two Sorted Lists | [LeetCode Link](https://leetcode.com/problems/merge-two-sorted-lists) |
 _(This table will grow as I continue this journey.)_
 
 ---
