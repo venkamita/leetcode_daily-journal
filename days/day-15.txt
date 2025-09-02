@@ -1,0 +1,30 @@
+136. Single Number
+Hello everyone. Today's problem deals with finding the number which occurs only once given that in an array all the 
+other values occur twice. Here is how I approached it. So I basically implemented a function that is very similar to
+what count function in python does. This function would count occurances of the element and return it. Hence then all
+I did was run a for loop over the array and inside it I nested a if condition checking the number of occurances if it 
+was not equal to 2 I would print it else I do not do anything. I actually realized after reading the hint that it can be 
+solved way quicker and optimally if we used the bitwise xor operator very clever indeed. While my solution is brutish and 
+basically just transferred logic from python to C.
+Code:
+int countocc(int* nums, int val, int numsSize){
+    int count=0;
+    for(int i=0;i<numsSize;i++){
+        if(nums[i]==val){
+            count++;
+        }
+    }
+    return count;
+}
+int singleNumber(int* nums, int numsSize) {
+    int* ptr=nums;
+    int output;
+    for(int i=0;i<numsSize;i++){
+        if(countocc(nums,nums[i],numsSize)!=2){
+            output=nums[i];
+        }
+    }
+    return output;
+}
+Signing off-
+Sharat Doddihal
