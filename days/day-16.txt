@@ -1,0 +1,28 @@
+28. Find the Index of the First Occurrence in a String
+Today's problem requires the user to know a important inbuilt
+function called strstr(char* str1,char* str2) which checks if
+str2 is a substring of str1. If false it returns NULL else
+it returns a pointer that points to the first occurance of the
+substring in the str1. So what I had to do after that was loop 
+over str1 checking if the str[i] address matched the pointer
+returned if yes my answer is i. Time complexity is O(m*n)
+and space complexity is O(1).
+Code:
+#include<string.h>
+int strStr(char* haystack, char* needle) {
+   int index;
+   if(strstr(haystack,needle)==NULL){
+    return -1;
+   }
+   else{
+    char* ptr=strstr(haystack,needle);
+    
+    for(int i=0;i<strlen(haystack);i++){
+        if(ptr==&haystack[i]){
+            return i;
+        }
+   }}
+    return -1;
+}
+Signing off-
+Sharat Doddihal
