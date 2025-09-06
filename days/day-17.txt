@@ -1,0 +1,31 @@
+53. Maximum Subarray
+Hello everyone. Today's problem is to find the largest possible sum of subarray given an array nums. 
+My first approach is so bad it ended up get TLE. But it was simply to compute all the subarray find
+their sum store it in an array and return the largest value from that array. But as you would have 
+guessed it is never that easy. Hence after a bit of struggling and reading I realized that the solution
+for this problem literally has a name. Brother this cannot be a medium level problem if university professors
+spent day and night to find an optimal approach. So yes this approach I cannot think of it unless I was aware of
+it beforehand but the solution we use to solve the problem is called the kadane algorithm. So what we do basically
+we traverse over the array and keep track of current sum. If the current sum is lesser than 0 then we reset it back
+to zero to offset the imbalance caused by the negative numbers basically we are ignoring the effect of negative number 
+prefixes. And we keep a variable say maxsub to keep track of maximum of such current sums and keep updating maxsub if 
+current sum is bigger than it and our answer is eventually found in maxsub.
+Code:
+int maxSubArray(int* nums, int numsSize) {
+    int curSum=0;
+    int maxsub=nums[0];
+    for(int i=0;i<numsSize;i++){
+        if(curSum<0){
+            curSum=0;
+        }
+        curSum=curSum+nums[i];
+        if(curSum>=maxsub){
+            maxsub=curSum;
+        }
+
+    
+    }
+return maxsub;
+}
+Signing off-
+Sharat Doddihal
