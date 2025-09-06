@@ -18,7 +18,7 @@ Each folder is named by **day number**, and inside each file, you'll find:
 
 ## 🚀 Goals
 
-- Build strong intuition in DSA in python  
+- Build strong intuition in DSA in python and C
 - Train consistency and discipline  
 - Prepare for interviews by learning from mistakes  
 - Create a personal code journal for future reference
