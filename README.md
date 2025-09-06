@@ -45,6 +45,7 @@ Each folder is named by **day number**, and inside each file, you'll find:
 | 14 | 21. Merge Two Sorted Lists | [LeetCode Link](https://leetcode.com/problems/merge-two-sorted-lists) |
 | 15 | 136. Single Number | [LeetCode Link](https://leetcode.com/problems/single-number) |
 | 16 | 28. Find the Index of the First Occurrence in a String | [LeetCode Link](https://leetcode.com/problems/find-the-index-of-the-first-occurrence-in-a-string) |
+| 17 | 53. Maximum Subarray | [LeetCode Link](https://leetcode.com/problems/maximum-subarray) |
 _(This table will grow as I continue this journey.)_
 
 ---
